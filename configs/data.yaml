@@ -1,0 +1,73 @@
+seed: 3407
+model: Qwen/Qwen3.5-0.8B-Base
+model_revision: dc7cdfe2ee4154fa7e30f5b51ca41bfa40174e68
+raw_dir: data/raw
+processed_dir: data/processed
+local_dir: data/local
+local_license: unknown
+local_group: religious
+max_local_bytes: 20000000
+min_chars: 80
+max_chars: 100000
+language_confidence: 0.95
+validation_fraction: 0.1
+evaluation_fraction: 0.1
+cpt_weights:
+  general: 0.9
+  religious: 0.1
+sft_weights:
+  orthodox_roleplay: 0.2
+  humorous_sermons: 0.2
+  biblical_explanations: 0.1
+  orthodox_traditions: 0.1
+  patristic_wisdom: 0.05
+  warhammer_roleplay: 0.1
+  fantasy_roleplay: 0.1
+  everyday_conversation: 0.15
+sources:
+- id: kobza
+  repo: podarok/kobza-cleaned-ua
+  group: general
+  limit: 2000
+  max_bytes: 20000000
+  revision: 8f8c8cc48bace16b40a07a9f33046f2fa8079bde
+- id: malyuk
+  repo: lang-uk/malyuk
+  group: general
+  limit: 1000
+  max_bytes: 10000000
+  revision: 374a1e3821b3ce94284a293b12ed2f6ba2a8ae63
+- id: kulish
+  repo: k-mktr/ukrainian_kulish_puliuy_uk
+  group: religious
+  limit: 1000
+  max_bytes: 5000000
+  revision: 571aa3e8a6be92cd81a784effc15156899115ec1
+- id: ogienko
+  repo: k-mktr/ukrainian_ogienko_uk
+  group: religious
+  limit: 1000
+  max_bytes: 5000000
+  revision: 4f3800af75b26eaa36c80bdcfca509f5cee181a2
+- id: warhammer
+  repo: vizn3r/warhammer40k-lore
+  group: warhammer
+  limit: 100
+  max_bytes: 5000000
+  revision: d3b800f36c787a3f2bf667c52df4d5a0b0b523ef
+- id: drama
+  repo: alexshynkarenk0/ukrdramacore-demo
+  group: dialogue
+  limit: 100
+  max_bytes: 5000000
+- id: wiki_dialogs
+  repo: lapa-llm/wiki-instruction-dialogs
+  group: dialogue
+  limit: 100
+  max_bytes: 5000000
+  revision: af610aaa0889325bdfff3069c3171b8a5f7b3377
+- id: ae_lib
+  url: https://ae-lib.org.ua/_orthodoxy.htm
+  group: religious
+  limit: 5
+  max_bytes: 2000000

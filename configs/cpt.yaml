@@ -1,0 +1,28 @@
+model: Qwen/Qwen3.5-0.8B-Base
+revision: dc7cdfe2ee4154fa7e30f5b51ca41bfa40174e68
+tokenizer: Qwen/Qwen3.5-0.8B-Base
+train_file: data/processed/cpt_train.jsonl
+validation_file: data/processed/cpt_validation.jsonl
+output_dir: outputs/cpt_adapter
+merged_dir: outputs/cpt_merged
+seed: 3407
+max_length: 1024
+lora: {r: 16, lora_alpha: 16, lora_dropout: 0.05, target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]}
+training:
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 8
+  learning_rate: 0.00001
+  warmup_ratio: 0.03
+  max_steps: 1000
+  gradient_checkpointing: true
+  logging_steps: 10
+  save_steps: 100
+  eval_steps: 100
+  eval_strategy: steps
+  save_total_limit: 3
+  report_to: none
+prefer_bf16: true
+prefer_8bit_optimizer: true
+min_free_vram_gib: 3
+device: auto
